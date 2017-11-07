@@ -150,11 +150,11 @@ def gogo_proto_library(
 
   if not go_proto_deps:
     if with_grpc:
-      go_proto_deps += GRPC_COMPILE_DEPS
+      go_proto_deps = go_proto_deps + GRPC_COMPILE_DEPS
     else:
-      go_proto_deps += PB_COMPILE_DEPS
+      go_proto_deps = go_proto_deps + PB_COMPILE_DEPS
 
-  proto_compile_args += {
+  proto_compile_args = proto_compile_args + {
     "name": name + ".pb",
     "protos": protos,
     "deps": [dep + ".pb" for dep in proto_deps],
